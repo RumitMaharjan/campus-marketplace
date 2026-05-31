@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <main class="main-content">
+
+        <nav class="nav-bar">
+            <div class="logo"><span>Campus</span> Marketplace <i class="fa-solid fa-shop"></i></div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="marketplace.html" class="active">marketplace</a>
+                <a href="mylistings.html">listings</a>
+                <a href="shortlist.html">shortlist</a>
+            </div>
+            <div class="nav-signout" id="signout-btn">Sign out <i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+        </nav>
+
+       <header class="marketplace-header">
+                <h1>Browse Marketplace</h1>
+                <p class="subtitle">Find text books, electronics, and student essentials near Macquarie campus.</p>
+        </header>
+
+        <section class="marketplace-container" aria-label="Prodyc Showcase">
+            <div id="loading-spinner" class="d-flex flex-column align-items-center justify-content-center py-5 my-5">
+                <div class="spinner-border text-danger" role="status" style="color: var(--primary-color) !important;">
+                    <span class="visually-hidden">Loading marketplace items...</span>
+                </div>
+                <p class="text-muted mt-3 font-monospace">Fetching active listings...</p>
+            </div>
+
+            <div id="items-grid" class="items-grid d-none">
+
+            </div>
+        </section>
+
+    </main>
+    <script type="module" src="js/marketplace.js"></script>
+</body>
+</html>
