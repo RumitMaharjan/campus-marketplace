@@ -13,7 +13,7 @@ const signoutBtn = document.getElementById('signout-btn');
 const itemsGrid = document.getElementById('items-grid');
 const loadingSpinner = document.getElementById('loading-spinner');
 
-
+// Callback for user to check if they're signed in or not
 requireAuth((user)=>{
     signoutBtn.addEventListener('click',()=>{
         signOutUser()
@@ -22,6 +22,7 @@ requireAuth((user)=>{
         });
     });
 
+    // Get the shortlist btn and pass it to addToShortList with itemId
     itemsGrid.addEventListener('click',(e)=>{
         const btn = e.target.closest('.shortlist-action-btn');
         if(!btn) return;
@@ -33,13 +34,17 @@ requireAuth((user)=>{
     loadItems(user);
 });
 
+// Loading Items of the users using query and getDocs
 async function loadItems(user){
 
     try{
+        // Items query for items 
         const itemsQuery = query(collection(db, 'items'), where('sellerId','!=',user.uid));
         
+        // Short list query for the shortlisted items
         const shortlistQuery = query(collection(db, 'shortlists'), where('userId','==',user.uid));
 
+        // Promise for both snapshot
         const [itemsSnapshot, shortlistSnapshot] = await Promise.all([
             getDocs(itemsQuery),
             getDocs(shortlistQuery)
@@ -47,14 +52,16 @@ async function loadItems(user){
 
         const docsArray = itemsSnapshot.docs;
 
+        // Get the shortlisted items 
          const userShortlistedItemIds = new Set(
             shortlistSnapshot.docs.map(doc => doc.data().itemId)
         );
 
-
+        // Loading spinner remove
         if(loadingSpinner) loadingSpinner.classList.add('d-none');
         if(itemsGrid) itemsGrid.classList.remove('d-none');
 
+        // Check for no items
         if(docsArray.length === 0){
             itemsGrid.innerHTML = `<p class="text-center text-muted my-5 w-100">No marketplace items available from other sellers right now.</p>`;
             return;
@@ -62,6 +69,7 @@ async function loadItems(user){
 
         let gridHTML = ``;
 
+        // Set the items using createItemCard
         docsArray.forEach(docSnapshot => {
             const itemData = docSnapshot.data();
             const itemId = docSnapshot.id;
@@ -81,6 +89,8 @@ async function loadItems(user){
     }
 }
 
+
+// Creating Item Cards
 function createItemCard(id, item, isSaved){
 
     const heartIconClass = isSaved?'fa-solid':'fa-regular';
@@ -109,6 +119,7 @@ function createItemCard(id, item, isSaved){
     `;
 }
 
+// Add to short list using doc and setDoc with a unique customeDocId
 async function addToShortlist(user, itemId, btn) {
     
     const icon = btn.querySelector('i');

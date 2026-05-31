@@ -14,7 +14,7 @@ const signoutBtn = document.getElementById('signout-btn');
 const itemsGrid = document.getElementById('items-grid');
 const loadingSpinner = document.getElementById('loading-spinner');
 
-
+// Required auth check
 requireAuth((user)=>{
     signoutBtn.addEventListener('click',()=>{
         signOutUser()
@@ -40,10 +40,12 @@ requireAuth((user)=>{
 async function loadItems(user){
 
     try{
+        // Shortlist query where userID == user.uid
         const shortlistQuery = query(collection(db, 'shortlists'), where('userId','==',user.uid));
 
         const shortlistDocs = await getDocs(shortlistQuery);
 
+        // Get the items for every shortlisted items we got
         const itemPromises = shortlistDocs.docs.map(shortDoc=>{
             const itemId = shortDoc.data().itemId;
             return getDoc(doc(db, 'items', itemId));
@@ -88,6 +90,7 @@ async function loadItems(user){
     }
 }
 
+// Create the shortlisted items with delete button
 function createItemCard(id, item){
     return  `
         <div class="product-card" id="card-${id}">
@@ -114,7 +117,7 @@ function createItemCard(id, item){
     `;
 }
 
-
+// Remove shortlist using deleteDoc
 async function removeShortlist(user, itemId, btn) {
 
     try{

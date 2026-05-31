@@ -3,6 +3,7 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-aut
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 
+// Initializing the configuration
 const firebaseConfig = {
     apiKey: "AIzaSyBlYQOgm3vaV6cf9S9r7NnuvSMpZQ6hstU",
     authDomain: "campus-marketplace-9b763.firebaseapp.com",
@@ -12,8 +13,11 @@ const firebaseConfig = {
     appId: "1:563778257349:web:8f2d822301e05262438bac"
 };
 
+// Initializing the app
 const app = initializeApp(firebaseConfig);
 
+// Authorizing the app using getAuth
 export const auth = getAuth(app);
 
+// Getting the cloud database
 export const db = getFirestore(app);

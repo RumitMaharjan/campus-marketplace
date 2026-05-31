@@ -26,6 +26,7 @@ requireAuth((user)=>{
 async function loadItems(user){
 
     try{
+        // Load items where sellerId == user.uid only to get mylistings 
         const itemsQuery = query(collection(db, 'items'), where('sellerId','==',user.uid));
 
         const snapshot = await getDocs(itemsQuery);
@@ -58,6 +59,7 @@ async function loadItems(user){
     }
 }
 
+// Create Item Card for mylistings
 function createItemCard(id, item){
 
     return  `

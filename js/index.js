@@ -3,6 +3,7 @@ import {requireAuth, signOutUser} from './auth.js';
 const displayEmail = document.getElementById('display-email');
 const signoutBtn = document.getElementById('signout-btn');
 
+// Callback function for requireAuth
 requireAuth((user)=>{
     
     displayEmail.textContent = user.email;

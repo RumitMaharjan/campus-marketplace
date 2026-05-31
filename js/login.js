@@ -6,6 +6,7 @@ const formBtn = document.getElementById('submit-form');
 
 const errorBox = document.getElementById('error-message');
 
+// Form submit button
 formBtn.addEventListener('click',()=>{
 
     const email = document.getElementById('email').value;
@@ -19,6 +20,7 @@ formBtn.addEventListener('click',()=>{
         return;
     }
 
+    // Using sign in with email and password from firebase auth
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential)=>{
             const user = userCredential.user;
@@ -45,13 +47,13 @@ formBtn.addEventListener('click',()=>{
 
 });
 
+// Function to show error messages
 function showError(message){
 errorBox.textContent = message;
 errorBox.classList.remove('d-none');
 }
 
-// Password Toggle
-
+// Password Toggle (hide/show)
 const passwordInput = document.getElementById('password');
 const passwordToggle = document.getElementById('toggle-password');
 const eyeShow = document.querySelector('.eye-show');
