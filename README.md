@@ -4,31 +4,6 @@ A web app built for COMP2750 at Macquarie University. Students can sign in, brow
 
 ---
 
-## Test Accounts
-
-| Email | Password |
-|---|---|
-| alice@students.mq.edu.au | Password123! |
-| bob@students.mq.edu.au | Password123@ |
-| carol@students.mq.edu.au | Password123 |
-
----
-
-## Firebase Config
-
-```js
-const firebaseConfig = {
-    apiKey: "AIzaSyBlYQOgm3vaV6cf9S9r7NnuvSMpZQ6hstU",
-    authDomain: "campus-marketplace-9b763.firebaseapp.com",
-    projectId: "campus-marketplace-9b763",
-    storageBucket:  "campus-marketplace-9b763.firebasestorage.app",
-    messagingSenderId: "563778257349",
-    appId: "1:563778257349:web:8f2d822301e05262438bac"
-};
-```
-
----
-
 ## Pages
 
 | Page | File | What it does |
@@ -84,6 +59,29 @@ cd campus-marketplace
 # Open in VS Code → right click index.html → Open with Live Server
 ```
 
+---
 
+## Test Accounts
+
+| Email | Password |
+|---|---|
+| alice@students.mq.edu.au | Password123! |
+| bob@students.mq.edu.au | Password123@ |
+| carol@students.mq.edu.au | Password123 |
+
+---
+
+## Firebase Config
+
+```js
+apiKey: "AIzaSyBlYQOgm3vaV6cf9S9r7NnuvSMpZQ6hstU"
+authDomain: "campus-marketplace-9b763.firebaseapp.com"
+projectId: "campus-marketplace-9b763"
+storageBucket: "campus-marketplace-9b763.firebasestorage.app"
+messagingSenderId: "563778257349"
+appId: "1:563778257349:web:8f2d822301e05262438bac"
+```
+
+---
 
 *COMP2750 Assignment 3 - Macquarie University, 2026*
